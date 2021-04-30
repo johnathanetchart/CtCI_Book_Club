@@ -3,7 +3,14 @@
 //you can use .includes to simulate the call of isSubstring
 
 function stringRotation(str1, str2) {
-  //code
+  let newStr1 = str1[str1.length - 1] + str1.slice(0, str1.length - 1);
+  while(newStr1 !== str1) {
+    if(newStr1 === str2) {
+      return true;
+    }
+    newStr1 = newStr1[newStr1.length - 1] + newStr1.slice(0, newStr1.length - 1);
+  }
+  return false;
 }
 
 module.exports = stringRotation;
