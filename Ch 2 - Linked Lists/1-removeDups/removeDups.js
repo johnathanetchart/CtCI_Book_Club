@@ -11,7 +11,35 @@ function Node(val) {
 */
 
 function removeDups(head) {
-  // solution
+  let counts = {};
+  let todelete = [];
+  let current = head;
+  while(current) {
+    if(counts[current.val] === undefined) {
+      counts[current.val] = 1;
+    } else {
+      // counts[current.val]++;
+      todelete.push(current.val);
+    }
+    current = current.next;
+  }
+
+  current = head;
+  while(current && todelete.length > 0) {
+    console.log(todelete)
+    if(current.next && (todelete.includes(current.next.val))) {
+      todelete.splice(todelete.indexOf(current.next.val), 1);
+      current.next = current.next.next;
+      // if(current.next.next) {
+      //   current.next = current.next.next;
+      // } else {
+      //   current.next = null;
+      // }
+    } else {
+      current = current.next;
+    }
+  }
+  return head;
 }
 
 module.exports = removeDups;
