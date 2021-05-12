@@ -15,9 +15,25 @@ function Node(val) {
 }
 */
 
-
+//input1: head of linked list
+//input2: k - integer
+//output: kth to last node
+//c
+//e: k = 1 -> return last
+//e: k = 0 or out of range -> return null
 const kthToLast = (head, k) => {
-  //Please code here
+  let nodeList = [];
+  let current = head;
+
+  while(current) {
+    nodeList.push(current);
+    current = current.next;
+  }
+  let nodeLoc = nodeList.length - k;
+  if (nodeLoc > 0 && nodeLoc < nodeList.length) {
+    return nodeList[nodeLoc];
+  }
+  return null;
 };
 
 module.exports = kthToLast;
