@@ -29,12 +29,63 @@ function Node(val) {
 }
 
 const sumLists = (list1, list2) => {
-  //Please code here
+  let sumOne = (list) => {
+    let sum = 0;
+    let digit = 1;
+    let current = list;
+    while (current) {
+      sum += current.val * digit;
+      digit *= 10;
+      current = current.next;
+    }
+    return sum;
+  };
+
+  let sum = sumOne(list1) + sumOne(list2);
+
+  let head = null;
+  let current = null;
+  while (sum !== 0) {
+    if (head === null) {
+      head = new Node(sum % 10);
+      current = head;
+    } else {
+      current.next = new Node(sum % 10);
+      current = current.next;
+    }
+    sum = (sum - (sum % 10)) / 10;
+  }
+  return head;
 };
 
 // Follow up
 const sumLists2 = (list1, list2) => {
-  // Your code here
+  let sumTwo = (list) => {
+    let sum = 0;
+    let current = list;
+    while (current) {
+      sum = (sum * 10) + current.val;
+      current = current.next;
+    }
+    return sum;
+  };
+  let sum = sumTwo(list1) + sumTwo(list2);
+  console.log('sum', sum);
+  let digits = 10 ** (sum.toString().length - 1);
+  let head = null;
+  let current = null;
+  while (sum !== 0) {
+    if (head === null) {
+      head = new Node((sum - sum % digits) / digits);
+      current = head;
+    } else {
+      current.next = new Node((sum - sum % digits) / digits);
+      current = current.next;
+    }
+    sum -= (sum - sum % digits);
+    digits = digits / 10;
+  }
+  return head;
 }
 
 module.exports = { sumLists, sumLists2 };

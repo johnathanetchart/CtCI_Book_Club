@@ -21,7 +21,41 @@ function Node(val) {
 }
 
 const partition = (head, x) => {
-  //Please code here
+  let leftCurrent = null;
+  let leftHead = null;
+  let rightCurrent = null;
+  let rightHead = null;
+  let current = head;
+  while(current) {
+    if(current.val < x) {
+      if(leftHead === null) {
+        leftHead = new Node(current.val);
+        leftCurrent = leftHead;
+      } else {
+        leftCurrent.next = new Node(current.val);
+        leftCurrent = leftCurrent.next;
+      }
+    } else if(current.val >= x) {
+      if(rightHead === null) {
+        rightHead = new Node(current.val);
+        rightCurrent = rightHead;
+      } else {
+        rightCurrent.next = new Node(current.val);
+        rightCurrent = rightCurrent.next;
+      }
+    }
+    current = current.next;
+  }
+  console.log('leftCurrent')
+  console.log(leftCurrent)
+  if(rightHead && leftHead) {
+    leftCurrent.next = rightHead;
+  }
+  if(leftHead) {
+    return leftHead;
+  } else {
+    return rightHead;
+  }
 };
 
 module.exports = partition;

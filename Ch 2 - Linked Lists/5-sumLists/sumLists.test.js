@@ -46,10 +46,10 @@ test('successfully sums two linked lists of different lengths', () => {
 
 // Uncomment below to test the follow up.
 
-// test('successfully sums two linked lists given in normal order', () => {
-//   const ll = llGenerator([6, 1, 7]);
-//   const ll2 = llGenerator([2, 9, 5]);
-//   const solution = llGenerator([9, 1, 2]);
-//   const result = sumLists2(ll, ll2);
-//   expect(result).toEqual(solution);
-// })
+test('successfully sums two linked lists given in normal order', () => {
+  const ll = llGenerator([6, 1, 7]);
+  const ll2 = llGenerator([2, 9, 5]);
+  const solution = llGenerator([9, 1, 2]);
+  const result = sumLists2(ll, ll2);
+  expect(result).toEqual(solution);
+})
