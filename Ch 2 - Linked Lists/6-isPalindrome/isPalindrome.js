@@ -19,7 +19,22 @@ function Node(val) {
 }
 
 const isPalindrome = (head) => {
-  //Please code here
+  let list = [];
+
+  let current = head;
+
+  while (current) {
+    list.push(current.val);
+    current = current.next;
+  }
+  let last = list.length - 1;
+
+  for(let i = 0; i < list.length / 2; i++) {
+    if(list[i] !== list[last - i]) {
+      return false;
+    }
+  }
+  return true;
 };
 
 
